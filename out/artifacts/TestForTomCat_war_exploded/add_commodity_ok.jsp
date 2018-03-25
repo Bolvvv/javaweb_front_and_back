@@ -13,77 +13,42 @@
 </head>
 <body>
 <%
+    //获取前端传来的信息
     String tmp_source = request.getParameter("add_source");
     String tmp_amount = request.getParameter("add_amount");
+    //设置URL
     String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
+    //设置用户名和密码
     String USER = "root";
     String PASS = "qq605725874";
+    //创建连接
     Connection conn = null;
+    //用PreparedStatement语句动态操作SQL语句
     Statement stmt = null;
-
     //调用Class.forName()方法加载驱动程序
-    Class.forName("com.mysql.jdbc.Driver");
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+    } catch (ClassNotFoundException classnotfoundexception) {
+        classnotfoundexception.printStackTrace();
+    }
     out.println("成功加载MySQL驱动！");
-    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-    stmt = conn.createStatement(); //创建Statement对象
-    out.println("成功连接到数据库！");
-
-    String sql = "insert into travel_order (source,amount) values ('" + tmp_source + "','" + tmp_amount +"')";
-    int n = stmt.executeUpdate(sql);
-    out.print(n);
-    stmt.close();
-    conn.close();
+    try {
+        //建立连接
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        //设置sql语句
+        String sql = "INSERT into travel_order (source,amount) VALUES (?,?)";
+        try {
+            /* 以下4句为关键 */
+            PreparedStatement pstmt = conn.prepareStatement(sql);// 装载SQL语句
+            pstmt.setString(1, tmp_source); // 给SQL中第一个问号赋变量id的值
+            pstmt.setString(2, tmp_amount); // 给SQL中第二个问号赋变量name的值
+            pstmt.execute(); // 执行SQL语句
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    } catch (SQLException sqlexception) {
+        sqlexception.printStackTrace();
+    }
 %>
-<%-- <% try {
-//调用Class.forName()方法加载驱动程序
-    Class.forName("com.mysql.jdbc.Driver");
-    out.println("成功加载MySQL驱动！");
-
-    String url = "jdbc:mysql://192.168.199.118:3306/test";    //JDBC的URL
-    Connection conn;
-
-    conn = DriverManager.getConnection(url, "root", "qq605725874");
-    Statement stmt = conn.createStatement(); //创建Statement对象
-    System.out.println("成功连接到数据库！");
-
-//查询数据的代码
-    String sql = "select * from travel_order";    //要执行的SQL
-    ResultSet rs = stmt.executeQuery(sql);//创建数据对象
-    while (rs.next()) {
-        out.print(rs.getInt(1) + "\t");
-        out.print(rs.getString(2) + "\t");
-        out.print(rs.getInt(3) + "\t");
-        out.println();
-    }
-
-//修改数据的代码
-    String sql2 = "UPDATE travel_order SET name=? WHERE number=?";
-    PreparedStatement pst = conn.prepareStatement(sql2);
-    pst.setString(1, "8888");
-    pst.setInt(2, 198);
-    pst.executeUpdate();
-
-//删除数据的代码
-    String sql3 = "DELETE FROM stu WHERE number=?";
-    pst = conn.prepareStatement(sql3);
-    pst.setInt(1, 701);
-    pst.executeUpdate();
-
-    ResultSet rs2 = stmt.executeQuery(sql);//创建数据对象
-    System.out.println("编号" + "\t" + "姓名" + "\t" + "年龄");
-    while (rs.next()) {
-        System.out.print(rs2.getInt(1) + "\t");
-        System.out.print(rs2.getString(2) + "\t");
-        System.out.print(rs2.getInt(3) + "\t");
-        System.out.println();
-    }
-
-    rs.close();
-    stmt.close();
-    conn.close();
-} catch (Exception e) {
-    e.printStackTrace();
-}
-%>--%>
 </body>
 </html>
