@@ -13,9 +13,10 @@
 </head>
 <body>
     <form action="add_commodity_ok.jsp">
-        商品名称:<input type="text" name="add_source"><br>
-        数量:<input type="text" name="add_amount">
+        房间名称:<input type="text" name="add_source"><br>
+        预定天数:<input type="text" name="add_amount">
         <input type="submit" value="提交">
     </form>
+    <input type="button" value="返回" onclick="window.location='index.jsp'">
 </body>
 </html>

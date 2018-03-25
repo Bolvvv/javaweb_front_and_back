@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: Bolvvv
   Date: 2018/3/25
-  Time: 11:17
+  Time: 23:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*,java.util.Date" %>
 <html>
 <head>
-    <title>add_commodity_ok</title>
+    <title>delete_information</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
@@ -26,28 +26,23 @@
     } catch (ClassNotFoundException classnotfoundexception) {
         classnotfoundexception.printStackTrace();
     }
-    //获取前端传来的信息
-    String tmp_source = request.getParameter("add_source");
-    String tmp_amount = request.getParameter("add_amount");
-    //用PreparedStatement语句动态操作SQL语句
+    //获取前端删除信息的order_id
+    int tmp_order_id = Integer.parseInt(request.getParameter("id"));
+    out.print(tmp_order_id);
     try {
         //建立连接
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        //创建添加信息的时间
-        java.sql.Date time = new java.sql.Date(new Date().getTime());
         //设置sql语句
-        String sql = "INSERT INTO travel_order (source,amount,create_time) VALUES (?,?,?)";
+        String sql = "DELETE FROM travel_order WHERE order_id=?";
         try {
-            /* 以下4句为关键 */
+            /* 最好使用PrepareStatement而不适用Statement */
             PreparedStatement pstmt = conn.prepareStatement(sql);// 装载SQL语句
-            pstmt.setString(1, tmp_source); // 给SQL中第一个问号赋变量id的值
-            pstmt.setString(2, tmp_amount); // 给SQL中第二个问号赋变量name的值
-            pstmt.setDate(3,time);
+            pstmt.setInt(1, tmp_order_id); // 给SQL中第一个问号赋变量id的值
             pstmt.execute(); // 执行SQL语句
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        out.print("创建成功 创建时间为："+time);
+        out.print("删除成功");
     } catch (SQLException sqlexception) {
         sqlexception.printStackTrace();
     }
