@@ -13,8 +13,10 @@
 </head>
 <body>
 <%
+    //设置手机热点的URL
+    String DB_URL = "jdbc:mysql://172.20.10.5:3306/test";
     //设置URL
-    String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
+    //String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
     //设置用户名和密码
     String USER = "root";
     String PASS = "qq605725874";

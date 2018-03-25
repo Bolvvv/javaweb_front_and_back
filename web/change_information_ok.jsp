@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: Bolvvv
-  Date: 2018/3/25
-  Time: 22:39
+  Date: 2018/3/26
+  Time: 0:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*,java.util.Date" %>
 <html>
 <head>
-    <title>delete_information</title>
+    <title>change_information_ok</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
@@ -28,22 +28,26 @@
     } catch (ClassNotFoundException classnotfoundexception) {
         classnotfoundexception.printStackTrace();
     }
-    //获取前端删除信息的order_id
-    int tmp_order_id = Integer.parseInt(request.getParameter("id"));
-try {
+    //获取前端传来的信息
+    String tmp_change_source = request.getParameter("change_source");
+    String tmp_change_amount = request.getParameter("change_amount");
+    int tmp_change_id = Integer.parseInt(request.getParameter("change_id"));
+    //用PreparedStatement语句动态操作SQL语句
+    try {
         //建立连接
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         //设置sql语句
-        String sql = "DELETE FROM travel_order WHERE order_id=?";
+        String sql = "UPDATE travel_order SET source = ? , amount = ? WHERE order_id =  "+tmp_change_id+" ";
         try {
-            /* 最好使用PrepareStatement而不适用Statement */
+            /* 以下4句为关键 */
             PreparedStatement pstmt = conn.prepareStatement(sql);// 装载SQL语句
-            pstmt.setInt(1, tmp_order_id); // 给SQL中第一个问号赋变量id的值
+            pstmt.setString(1, tmp_change_source); // 给SQL中第一个问号赋变量id的值
+            pstmt.setString(2, tmp_change_amount); // 给SQL中第二个问号赋变量name的值
             pstmt.execute(); // 执行SQL语句
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        out.print("删除成功");
+        out.print("修改信息成功！");
     } catch (SQLException sqlexception) {
         sqlexception.printStackTrace();
     }

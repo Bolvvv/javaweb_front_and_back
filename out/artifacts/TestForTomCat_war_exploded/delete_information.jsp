@@ -13,8 +13,10 @@
 </head>
 <body>
 <%
+    //设置手机热点的URL
+    String DB_URL = "jdbc:mysql://172.20.10.5:3306/test";
     //设置URL
-    String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
+    //String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
     //设置用户名和密码
     String USER = "root";
     String PASS = "qq605725874";
@@ -28,7 +30,6 @@
     }
     //获取前端删除信息的order_id
     int tmp_order_id = Integer.parseInt(request.getParameter("id"));
-    out.print(tmp_order_id);
 try {
         //建立连接
         conn = DriverManager.getConnection(DB_URL, USER, PASS);

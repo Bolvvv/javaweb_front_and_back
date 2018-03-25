@@ -22,8 +22,10 @@
       <th>操作</th>
     </tr>
   <%
+    //设置手机热点的URL
+    String DB_URL = "jdbc:mysql://172.20.10.5:3306/test";
     //设置URL
-    String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
+    //String DB_URL = "jdbc:mysql://192.168.199.118:3306/test";
     //设置用户名和密码
     String USER = "root";
     String PASS = "qq605725874";
@@ -52,7 +54,7 @@
         out.print("<td>"+show_source+"</td>");
         out.print("<td>"+show_amount+"</td>");
         out.print("<td>"+show_create_time+"</td>");
-        out.print("<td>"+"<input type=\"button\" value=\"修改\" onclick=\"change_information(show_order_id)\" />"+"<input type=\"button\" value=\"删除\" onclick=\"delete_information('"+ show_order_id + "')\"/>"+"</td>");
+        out.print("<td>"+"<input type=\"button\" value=\"修改\" onclick=\"change_information('"+ show_order_id + "')\" />"+"<input type=\"button\" value=\"删除\" onclick=\"delete_information('"+ show_order_id + "')\"/>"+"</td>");
         out.print("</tr>");
       }
       stmt.close();
@@ -70,8 +72,8 @@
     function add() {
         window.location="add_commodity.jsp";
     }
-    function change_information() {
-        window.location="";
+    function change_information(i) {
+        window.location="change_information.jsp?id="+i+"";
     }
     function delete_information(i) {
         var c = confirm("确认要删除吗？");
