@@ -9,6 +9,7 @@
     <list default="true" id="e7b1e890-0eb3-4d63-90f5-d023e0abef0a" name="Default" comment="">
       <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TestForTomCat_war_exploded/add_commodity_ok.jsp" afterPath="$PROJECT_DIR$/out/artifacts/TestForTomCat_war_exploded/add_commodity_ok.jsp" />
       <change beforePath="$PROJECT_DIR$/web/add_commodity_ok.jsp" afterPath="$PROJECT_DIR$/web/add_commodity_ok.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -62,8 +63,8 @@
       <file leaf-file-name="add_commodity_ok.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/add_commodity_ok.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="38" column="77" lean-forward="true" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
+            <state relative-caret-position="375">
+              <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
               <folding>
                 <marker date="1521973994567" expanded="true" signature="1107:1160" ph="INSERT into travel_order... " />
               </folding>
@@ -506,12 +507,12 @@
       <workItem from="1521887341382" duration="10122000" />
       <workItem from="1521943105473" duration="9176000" />
       <workItem from="1521965234217" duration="869000" />
-      <workItem from="1521966140024" duration="6076000" />
+      <workItem from="1521966140024" duration="6166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33833000" />
+    <option name="totallyTimeSpent" value="33923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -879,8 +880,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/add_commodity_ok.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="38" column="77" lean-forward="true" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
+        <state relative-caret-position="375">
+          <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
           <folding>
             <marker date="1521973994567" expanded="true" signature="1107:1160" ph="INSERT into travel_order... " />
           </folding>
