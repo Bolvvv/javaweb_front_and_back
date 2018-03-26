@@ -31,6 +31,8 @@
     //获取前端传来的信息
     String tmp_source = request.getParameter("add_source");
     String tmp_amount = request.getParameter("add_amount");
+    out.print(tmp_source);
+    out.print(tmp_amount);
     //用PreparedStatement语句动态操作SQL语句
     try {
         //建立连接

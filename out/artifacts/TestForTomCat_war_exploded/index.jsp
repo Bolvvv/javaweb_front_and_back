@@ -66,6 +66,7 @@
   </table>
   <br>
   <input type="button" value="添加订单" onclick="add()"/>
+  <input type="button" value="查询订单" onclick="inqury()"/>
   </body>
 </html>
 <script>
@@ -81,5 +82,8 @@
         {
             window.location="delete_information.jsp?id="+i+"";
         }
+    }
+    function inqury () {
+        window.location="inqury_information.jsp"
     }
 </script>
